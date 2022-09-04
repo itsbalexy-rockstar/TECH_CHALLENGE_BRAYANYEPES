@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getId from "react-uuid";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../services/localstorage";
 import { useForm } from "./../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Form = () => {
   const { inputValues, handleInputChange, resetForm, setForm } = useForm({
@@ -28,16 +29,37 @@ const Form = () => {
     }
   }, [uuid]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const verifyData = () => {
+    const { origin, destination, passengers, date } = inputValues;
+    if (
+      (origin.length < 2) |
+      "" |
+      ((destination.length < 2) | "") |
+      (passengers === "") |
+      (date === "")
+    ) {
+      Swal.fire({
+        title: "Error!",
+        text: "Todos los campos deben llenarse con datos válidos",
+        icon: "error",
+        confirmButtonText: "Cerrar",
+      });
+      navigate("/form");
+      return;
+    }
     uuid
       ? editReservation(uuid, inputValues)
       : addReservation({
           uuid: getId(),
           ...inputValues,
         });
-    resetForm();
     navigate("/");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    verifyData();
+    resetForm();
   };
 
   return (
