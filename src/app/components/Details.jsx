@@ -17,7 +17,7 @@ const Details = () => {
         Acá podrás visualizar los detalles de tu ruta para que te sientas más
         cómodo a la hora de viajar con nosotros
       </p>
-      <div className="grid grid-cols-2 mt-20">
+      <div className="grid md:grid-cols-2 grid-cols-1 mt-20">
         <div className="flex flex-col justify-center items-center">
           <img src={imageTrip} alt="" className="rounded w-full" />
         </div>

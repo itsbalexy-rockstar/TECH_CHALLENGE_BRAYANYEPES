@@ -14,17 +14,17 @@ const ListItem = ({ reservation, setReservations }) => {
       key={uuid}
       className="bg-gray-200 m-2 p-2 flex justify-between items-center rounded"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col justify-center items-center">
         <p className="text-center">Ticket N°</p>
         <span className="text-sm">{uuid}</span>
         <button
-          className="p-2 bg-indigo-500 rounded text-white my-1"
+          className="p-2 bg-indigo-500 rounded text-white my-1 hidden md:flex"
           onClick={() => navigate(`/details/${uuid}`)}
         >
           Ver detalles
         </button>
       </div>
-      <div>
+      <div className="hidden md:flex flex-col justify-center items-center">
         <p className="flex text-amber-500">
           Origen: <span className="mx-4 text-black">{origin}</span>
         </p>
@@ -50,6 +50,12 @@ const ListItem = ({ reservation, setReservations }) => {
           className="p-2 bg-red-500 rounded text-white my-1"
         >
           Eliminar
+        </button>
+        <button
+          className="p-2 bg-indigo-500 rounded text-white my-1 flex md:hidden"
+          onClick={() => navigate(`/details/${uuid}`)}
+        >
+          Ver detalles
         </button>
       </div>
     </div>
