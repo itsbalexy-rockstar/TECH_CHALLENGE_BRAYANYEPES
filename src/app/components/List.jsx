@@ -12,7 +12,11 @@ const List = () => {
   return (
     <div className="">
       {reservations.map((reservation) => (
-        <ListItem reservation={reservation} setReservations={setReservations} />
+        <ListItem
+          reservation={reservation}
+          setReservations={setReservations}
+          key={reservation.uuid}
+        />
       ))}
       {reservations.length === 0 && (
         <div className="flex flex-col justify-center items-center">

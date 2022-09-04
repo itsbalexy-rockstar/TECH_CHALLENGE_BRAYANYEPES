@@ -26,16 +26,16 @@ const ListItem = ({ reservation, setReservations }) => {
       </div>
       <div>
         <p className="flex text-amber-500">
-          Origen: <p className="mx-4 text-black">{origin}</p>
+          Origen: <span className="mx-4 text-black">{origin}</span>
         </p>
         <p className="flex text-amber-500">
-          Destino: <p className="mx-4 text-black">{destination}</p>
+          Destino: <span className="mx-4 text-black">{destination}</span>
         </p>
         <p className="flex text-amber-500">
-          N° Pasajeros: <p className="mx-4 text-black">{passengers}</p>
+          N° Pasajeros: <span className="mx-4 text-black">{passengers}</span>
         </p>
         <p className="flex text-amber-500">
-          Fecha: <p className="mx-4 text-black">{date}</p>
+          Fecha: <span className="mx-4 text-black">{date}</span>
         </p>
       </div>
       <div className="flex flex-col">
