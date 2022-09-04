@@ -9,7 +9,7 @@ const Details = () => {
   const { origin, destination, passengers, date } = getReservationById(uuid);
   const navigate = useNavigate();
   return (
-    <div className="mt-10 p-4">
+    <div className="p-4 flex flex-col">
       <h1 className="text-center text-lg font-bold text-amber-500">
         Conoce los detalles de tu reserva
       </h1>
@@ -17,7 +17,7 @@ const Details = () => {
         Acá podrás visualizar los detalles de tu ruta para que te sientas más
         cómodo a la hora de viajar con nosotros
       </p>
-      <div className="grid md:grid-cols-2 grid-cols-1 mt-20">
+      <div className="grid md:grid-cols-2 grid-cols-1 mt-10">
         <div className="flex flex-col justify-center items-center">
           <img src={imageTrip} alt="" className="rounded w-full" />
         </div>
@@ -47,14 +47,14 @@ const Details = () => {
             Si necesitas más información, comunícate a la linea de servicio al
             cliente
           </p>
+          <button
+            className="bg-amber-500 rounded text-white w-[80%] p-1 flex justify-center items-center"
+            onClick={() => navigate("/")}
+          >
+            Regresar
+          </button>
         </div>
       </div>
-      <button
-        className="bg-amber-500 w-full mt-10 rounded text-white"
-        onClick={() => navigate("/")}
-      >
-        Regresar
-      </button>
     </div>
   );
 };
