@@ -1,7 +1,62 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { getReservationById } from "../services/localstorage";
+import imageTrip from "../../assets/autobus.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Details = () => {
-  return <div>Details</div>;
+  const { uuid } = useParams();
+  const { origin, destination, passengers, date } = getReservationById(uuid);
+  const navigate = useNavigate();
+  return (
+    <div className="mt-10 p-4">
+      <h1 className="text-center text-lg font-bold text-amber-500">
+        Conoce los detalles de tu reserva
+      </h1>
+      <p className="text-center text-md text-gray-500">
+        Acá podrás visualizar los detalles de tu ruta para que te sientas más
+        cómodo a la hora de viajar con nosotros
+      </p>
+      <div className="grid grid-cols-2 mt-20">
+        <div className="flex flex-col justify-center items-center">
+          <img src={imageTrip} alt="" className="rounded w-full" />
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <h4 className="text-amber-500 font-bold">Información</h4>
+          <p className="text-center text-sm text-gray-300 m-4">
+            En el viaje, tendrás la posibilidad de conocer lugares increíbles y
+            recibir las buenas vibras de los paisajes de nuestro país
+          </p>
+          <div className="flex">
+            <p className="text-md text-amber-500 font-bold">Origen:</p>
+            <p className="mx-4">{origin}</p>
+          </div>
+          <div className="flex">
+            <p className="text-md text-amber-500 font-bold">Destino:</p>
+            <p className="mx-4">{destination}</p>
+          </div>
+          <div className="flex">
+            <p className="text-md text-amber-500 font-bold">N° pasajeros:</p>
+            <p className="mx-4">{passengers}</p>
+          </div>
+          <div className="flex">
+            <p className="text-md text-amber-500 font-bold">Fecha:</p>
+            <p className="mx-4">{date}</p>
+          </div>
+          <p className="text-center text-sm text-gray-300 mx-8 my-4">
+            Si necesitas más información, comunícate a la linea de servicio al
+            cliente
+          </p>
+        </div>
+      </div>
+      <button
+        className="bg-amber-500 w-full mt-10 rounded text-white"
+        onClick={() => navigate("/")}
+      >
+        Regresar
+      </button>
+    </div>
+  );
 };
 
 export default Details;
