@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export const getListData = () => {
   if (!localStorage["data"]) {
     localStorage["data"] = "[]";
@@ -18,6 +20,12 @@ export const removeReservation = (uuid) => {
   let data = getListData();
   data = data.filter((reservation) => reservation.uuid !== uuid);
   localStorage["data"] = JSON.stringify(data);
+  Swal.fire({
+    title: "Oh no!",
+    text: "Haz eliminado una reserva",
+    icon: "warning",
+    confirmButtonText: "Cerrar",
+  });
 };
 
 export const getReservationById = (uuid) => {
@@ -31,4 +39,10 @@ export const editReservation = (uuid, payload) => {
   data = data.filter((reservation) => reservation.uuid !== uuid);
   data.push(payload);
   localStorage["data"] = JSON.stringify(data);
+  Swal.fire({
+    title: "Genial!",
+    text: "Los datos han sido modificados correctamente",
+    icon: "success",
+    confirmButtonText: "Cerrar",
+  });
 };
